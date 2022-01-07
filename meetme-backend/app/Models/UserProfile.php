@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class UserProfile extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['hometown', 'city', 'phone', 'dob', 'about', 'avatar', 'friends', 'friend_requests', 'blocked_users', 'user_id'];
+    protected $casts = ["friends" => "array", "friend_requests" => "array"];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

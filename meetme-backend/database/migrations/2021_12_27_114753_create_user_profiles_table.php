@@ -16,12 +16,12 @@ class CreateUserProfilesTable extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
             //$table->unsignedBigInteger('user_id');
-            $table->string('hometown');
-            $table->string('city');
-            $table->string('phone');
+            $table->string('hometown')->nullable();
+            $table->string('city')->nullable();
+            $table->string('phone')->nullable();
             $table->date('dob');
-            $table->mediumText('about');
-            $table->mediumText('avatar');
+            $table->mediumText('about')->nullable();
+            $table->mediumText('avatar')->nullable();
             $table->json('friends')->default(json_encode(["users" => []]));
             $table->json('friend_requests')->default(json_encode(["users" => []]));
             $table->json('blocked_users')->default(json_encode(["users" => []]));
