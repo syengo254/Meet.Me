@@ -17,6 +17,9 @@ class MyPostResource extends JsonResource
         return [
             'id' => $this->id,
             'post' => $this->post,
+            'likes' => $this->likes,
+            'has_image' => $this->has_image,
+            'image_url' => $this->image_url,
         ];
     }
 }

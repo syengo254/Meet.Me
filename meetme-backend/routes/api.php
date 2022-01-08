@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,11 @@ Route::group(["middleware" => ["auth:sanctum"]], function(){
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/auth/check', [AuthController::class, 'check']);
     Route::get('/friends/suggest/{id}', [FriendController::class, 'suggest']);
+    Route::post('/friends/request/{user}', [FriendController::class, 'addRequest']);
     Route::resource('/posts', PostController::class);
     Route::get('/posts/latest/{id}', [PostController::class, 'latest']);
     Route::post('/my-posts', [PostController::class, 'myPosts']);
+    Route::post('/user/{user}', [UserController::class, 'update']);
 });
 
 
